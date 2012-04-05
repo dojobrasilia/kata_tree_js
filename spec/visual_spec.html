@@ -4,20 +4,27 @@
 <head>
   <title>Visual Spec</title>
 
-  <!-- include source files here... -->
   <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="../src/tree.js"></script>
+
+  <style type="text/css">
+    .node{
+      margin-left: 20px;
+    }
+  </style>
+
 </head>
 
 <body>
 
-  <div id="tree_place" style="width:300px; margin:30px auto">
+  <div id="tree_place" style="width:300px; margin: 30px auto">
   </div>
-
   <script type="text/javascript">
     $(function() {
-      var node = new Node({name:'node1'});
-      $('#tree_place').html(node.name);
+      var json = {name: 'node', children:[{name:'child1', children:[{name:'grand_child'}]}]};
+      var node = new Node(json);
+      $("#tree_place").html(node.html);
+
     });
   </script>
 
