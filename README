@@ -1,0 +1,35 @@
+5 de abril de 2012
+
+Rolim codificou um árvore em JS
+Primeiro rolou a construção do Objeto Node
+Depois veio a criação do html da árvore
+Então testou-se o comportamento de abrir e fechar
+E, por fim, foi feito uma refatoração pros filhos ficarem em um mesmo container
+
+
+Participantes:
+* Radamés
+* Reis
+* João Stein
+* Rolim
+* Pedroso
+* Haikal
+
+
+=)
+* fizemos um Kata
+* tema foi massa
+* o problema teve início, meio e fim
+* aprendemos o seletor css '>' (filho direto)
+* fizemos a retro com calma (30min) 
+
+=(
+* Rolim ficou meio afobado
+* Conversamos pouco sobre o processo
+
+comentários:
+* podia ser ul e li em vez de div.node e div.children
+* tivemos uma boa discussão sobre o processo de design de código
+* ordem dos contextos dos testes
+* qual é o valor do primeiro contexto?
+

@@ -12,6 +12,7 @@ Node = function (data) {
 
   var self = this;
 
+  //criação de filhos
   this.children = [];
   if(data.children) {
     data.children.forEach(function (child) {
@@ -21,6 +22,7 @@ Node = function (data) {
     });
   }
 
+  //clicks
   this.html.find('span.name:eq(0)').click(function() {
     var children = self.html.find('div.children:eq(0)')
     if(children.css('display')=='block'){

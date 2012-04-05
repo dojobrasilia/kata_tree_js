@@ -92,10 +92,10 @@ describe("Tree", function() {
         expect(node.html.css('display')).toBe('block');
         expect(node.html.find('div.children:eq(0)').css('display')).toBe('block');
         
-        node.html.find('span.name:eq(0)').click();
+        node.html.find('> span.name').click();
 
         expect(node.html.css('display')).toBe('block');
-        expect(node.html.find('div.children:eq(0)').css('display')).toBe('none');
+        expect(node.html.find('> div.children').css('display')).toBe('none');
       });
 
     });
