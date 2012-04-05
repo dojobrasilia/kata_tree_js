@@ -11,6 +11,10 @@
     .node{
       margin-left: 20px;
     }
+
+    .name{
+      cursor: pointer;
+    }
   </style>
 
 </head>
@@ -21,9 +25,18 @@
   </div>
   <script type="text/javascript">
     $(function() {
-      var json = {name: 'node', children:[{name:'child1', children:[{name:'grand_child'}]}]};
-      var node = new Node(json);
-      $("#tree_place").html(node.html);
+      var grand_child = {name: 'grand_child'};
+      var child1 = {name: 'child1', children:[grand_child]};
+      var child2 = {name: 'child2', children:[grand_child]};
+      var father = {name: 'father', children:[child1, child2]};
+
+      var node1 = new Node(father);
+      var node2 = new Node(father);
+      var node3 = new Node(father);
+
+      $("#tree_place").append(node1.html);
+      $("#tree_place").append(node2.html);
+      $("#tree_place").append(node3.html);
 
     });
   </script>

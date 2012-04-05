@@ -47,15 +47,55 @@ describe("Tree", function() {
       it("creates a div with node's name when a Node is created", function () {
         var json = {name: 'node', children:[{name:'child1', children:[{name:'grand_child'}]}]};
         var node  = new Node(json);
-
-        expect($('<p></p>').append(node.html).html()).toContain('<div class="node">node');
+        expect(node.html.get(0).tagName).toBe('DIV');
       });
 
-      it("creates a div for each node", function () {
+      it("creates a div.children inside div.node", function () {
+        var json = {name: 'node'};
+        var node  = new Node(json);
+        expect(node.html.find('div.children').length).toBe(1);
+      });
+
+      it("creates a div and a div.children for each node", function () {
         var json = {name: 'node', children:[{name:'child1', children:[{name:'grand_child'}]}]};
         var node  = new Node(json);
 
-        expect($('<p></p>').append(node.html).find('.node').length).toBe(3);
+        expect(node.html.get(0).tagName).toBe('DIV');
+        expect(node.html.find('div.children').length).toBe(3);
+        expect(node.html.find('div.node').length).toBe(2);
+      });
+
+      it("creates children inside div.children", function () {
+        var json = {name: 'node', children:[{name:'child1', children:[{name:'grand_child'}]}]};
+        var node  = new Node(json);
+
+        expect(node.html.find('div.children:eq(0)').find('div.node').length).toBe(2);
+      });
+
+    });
+
+    describe("open and close nodes", function() {
+
+      it("opens children when node's name is clicked", function () {
+        var grand_child = {name: 'grand_child'};
+        var child1 = {name: 'child1', children:[grand_child]};
+        var child2 = {name: 'child2', children:[grand_child]};
+        var father = {name: 'father', children:[child1, child2]};
+
+        var node  = new Node(father);
+
+        expect(node.html.css('display')).toBe('block');
+        expect(node.html.find('div.children:eq(0)').css('display')).toBe('none');
+
+        node.html.find('span.name:eq(0)').click();
+
+        expect(node.html.css('display')).toBe('block');
+        expect(node.html.find('div.children:eq(0)').css('display')).toBe('block');
+        
+        node.html.find('span.name:eq(0)').click();
+
+        expect(node.html.css('display')).toBe('block');
+        expect(node.html.find('div.children:eq(0)').css('display')).toBe('none');
       });
 
     });
